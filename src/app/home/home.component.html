@@ -1,0 +1,184 @@
+<section class="profile py-5">
+<div class="container">
+  <button
+  class="btn addNote py-1 my-3 px-3 d-flex ms-auto "
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal">
+  Add Note
+</button>
+<!-- <button
+class="btn addNote py-1 my-3 px-3 d-flex ma-auto "
+(click)="deleteNotes()">
+Delete All
+</button> -->
+
+
+  <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 gy-3 note-container">
+    <div *ngFor="let note of myNotes; let i = index">
+      <div class="title card h-100  shadow-lg mb-3">
+
+        <div class="d-flex justify-content-between align-content-center  card-header">
+          <h2 class="title">
+            {{ note.title }}
+          </h2>
+          <div class="dropdown">
+            <button class="btn btn-secondary bg-transparent border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-ellipsis-vertical"></i>
+            </button>
+            <ul class="dropdown-menu">
+
+            <li (click)="getNoteId(note._id,i)" data-bs-toggle="modal" data-bs-target="#deleteNoteModel">
+              <a class="dropdown-item text-danger d-flex justify-content-between ">
+                Delete
+
+                <i class="fa-solid fa-trash-can pt-1"></i>
+
+              </a>
+
+            </li>
+
+            <li (click)="getNoteId(note._id,i)" data-bs-toggle="modal" data-bs-target="#EditNoteModel">
+              <a class="dropdown-item text-warning d-flex justify-content-between">
+                Edit
+
+                <i class="fa-solid fa-pen-to-square pt-1"></i>
+
+              </a>
+
+            </li>
+            </ul>
+          </div>
+
+
+        </div>
+
+
+        <div class="card-body">
+
+          <p class="card-text">{{ note.desc }}</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<!--------------------------------- Modal ------------------------------------------->
+<form  [formGroup]="noteDetails" (ngSubmit)="addNote(noteDetails)">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">New Note</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="titleName" class="col-form-label  text-dark">Title:</label>
+          <input
+          formControlName="title"
+            type="text"
+            class="form-control"
+            id="titleName"
+            formControlName="title"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="message" class="col-form-label  text-dark">Message:</label>
+          <textarea
+          formControlName="desc"
+            class="form-control"
+            id="message"
+            formControlName="desc"
+            cols="30"
+            rows="10"
+          ></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Add Note</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+</form>
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+<!-- Modal Delete  -->
+<div class="modal fade" id="deleteNoteModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">Are you sure to delete this note</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <p class=" text-danger text-center">Are you sure you want to delete this note ?  </p>
+      </div>
+      <div class="modal-footer">
+        <button (click)="deleteNote()" type="submit" class="btn btn-danger">Delete Note</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--------------------------------------------------------------------------------------------------------------------->
+<!-- Modal  Edit  -->
+<form  [formGroup]="noteDetails" (ngSubmit)="editnote(noteDetails)">
+<div class="modal fade" id="EditNoteModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-dark" id="EditNoteModel">Edit Note</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="titleName" class="col-form-label  text-dark">Title:</label>
+          <input
+          formControlName="title"
+            type="text"
+            class="form-control"
+            id="titleName"
+            formControlName="title"
+
+          />
+        </div>
+        <div class="mb-3">
+          <label for="message" class="col-form-label  text-dark">Message:</label>
+          <textarea
+          formControlName="desc"
+            class="form-control"
+            id="message"
+            formControlName="desc"
+            cols="30"
+            rows="10"
+          ></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Edit Note</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</form>
+
+</section>

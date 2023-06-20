@@ -1,0 +1,53 @@
+<section class="py-5">
+  <div class="container">
+  <form (ngSubmit)="signUp(registerData)"  class=" text-center" [formGroup]="registerData">
+    <h3 class=" pb-3">Sign Up To Notes </h3>
+    <mat-error>{{errorMessage}}</mat-error>
+      <mat-form-field class=" w-75" appearance="fill">
+        <mat-label>Enter your First Name</mat-label>
+        <input type="text" formControlName="first_name" placeholder="Enter First Name"  class="" matInput   >
+        <mat-error *ngIf="registerData.controls.first_name.status === 'INVALID'" >Please Enter Valid name</mat-error>
+
+      </mat-form-field>
+
+      <mat-form-field class=" my-3 w-75" appearance="fill">
+        <mat-label>Enter your Last Name</mat-label>
+        <input type="text"  formControlName="last_name" placeholder="Enter Last Name" class="" matInput  required>
+        <mat-error *ngIf="registerData.controls.last_name.status === 'INVALID'" >Please Enter Valid name</mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class=" w-75" appearance="fill">
+        <mat-label>Enter your Email</mat-label>
+        <input type="email"  formControlName="email" placeholder="Enter Email"   class="" matInput  required>
+        <mat-error *ngIf="registerData.controls.email.status === 'INVALID'" >Please Enter Valid Email</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class=" my-3 w-75" appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input formControlName="password" placeholder="Enter Password"    type="password"  matInput [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" type="reset">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+
+        <mat-error *ngIf="registerData.controls.password.status === 'INVALID'" >Please Enter Valid Password</mat-error>
+
+      </mat-form-field>
+
+
+  <br>
+
+  <button class="glow-on-hover w-75 p-4"  mat-raised-button color="primary" type="submit">
+
+    <span *ngIf="isLoading">  Sign Up  </span>
+    <i  *ngIf="!isLoading" class="fa fa-spinner fa-spin" style="font-size:20px"></i>
+
+
+    </button>
+
+  </form>
+
+
+
+  </div>
+  </section>

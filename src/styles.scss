@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Roboto:wght@300&display=swap');
+:root{
+  --text-color:#fff;
+  --bg-main:#18004b58;
+  --bg-navbar:#7e55b2aa;
+  --text-font:'Mochiy Pop One', sans-serif;
+}
+body{
+  font-family: var(--text-font) !important;
+  background-color: #16002ae5  !important;
+
+}
+.social{
+  color: #ffff;
+  transition: all .3s;
+  font-size: 1.25rem;
+}
+.social:hover{
+  color: #1d0936;
+}
+li{
+  list-style-type: none;
+}
+.navbar{
+  background-color:var(--bg-navbar);
+}
+p,h2,h3,h4,h1,span,button,label{
+  font-family: var(--text-font) !important;
+  color: #fff !important;
+}
+h3{
+  font-family: var(--text-font) !important;
+  color: var(--text-color) !important;
+  font-size: 22px !important;
+}
+a{
+  color:var(--text-color) !important;
+  font-family: var(--text-font);
+transition: color .5s;
+}
+ a:hover{
+  color: #2798e3ee !important;
+}
+
+input{
+  color: var(--text-color) !important;
+}
+
+
+.glow-on-hover {
+  width: 220px;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.glow-on-hover:before {
+  content: '';
+  background: linear-gradient(45deg, #9000ffa3, #0037ff6a, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left:-2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+}
+
+.glow-on-hover:active {
+  color: #000
+}
+
+.glow-on-hover:active:after {
+  background: transparent;
+}
+
+.glow-on-hover:hover:before {
+  opacity: 1;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-navbar);
+  left: 0;
+  top: 0;
+  border-radius: 1px;
+}
+.card{
+  background-color:#104fac !important;
+}
+.dropdown{
+  cursor: pointer;
+}
+input{
+  color: #000 !important  ;
+}
+.title{
+  word-wrap: break-word !important;
+}
+///////////////////////////////////////////////////////////////////
+///

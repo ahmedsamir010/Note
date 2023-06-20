@@ -1,0 +1,63 @@
+<section>
+  <div class="container">
+
+    <div class="">
+
+
+  <form (ngSubmit)="signIn(loginData)"  class=" text-center" [formGroup]="loginData">
+    <h3 class=" py-3">Sign In To Notes </h3>
+
+
+      <mat-error class=" py-3">{{errorMessage}}</mat-error>
+
+      <mat-form-field class=" w-75" appearance="fill">
+        <mat-label>Enter your Email</mat-label>
+        <input type="email"  formControlName="email" placeholder="Enter Email"   class="" matInput  required>
+        <mat-error *ngIf="loginData.controls.email.status === 'INVALID'" >Please Enter Valid Email</mat-error>
+      </mat-form-field>
+
+
+
+      <mat-form-field class=" my-3 w-75" appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input formControlName="password" placeholder="Enter Password"    type="password"  matInput [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" type="reset">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+
+        <mat-error *ngIf="loginData.controls.password.status === 'INVALID'" >Please Enter Valid Password</mat-error>
+
+      </mat-form-field>
+
+
+<!--
+      <mat-form-field class=" my-3 w-75" appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input formControlName="password" placeholder="Enter Password"    type="password"  matInput [type]="hide ? 'password' : 'text'">
+        <button class="glow-on-hover" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+
+        <mat-error *ngIf="loginData.controls.password.status === 'INVALID'" >Please Enter Valid Password</mat-error>
+
+      </mat-form-field> -->
+
+
+  <br>
+
+
+  <button class="glow-on-hover w-75 p-4"  mat-raised-button color="primary" type="submit">
+
+  <span *ngIf="isLoading">  Log In </span>
+  <i  *ngIf="!isLoading" class="fa fa-spinner fa-spin" style="font-size:20px"></i>
+
+
+  </button>
+
+  </form>
+
+
+
+  </div>
+  </div>
+  </section>
